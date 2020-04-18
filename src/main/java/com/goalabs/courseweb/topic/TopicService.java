@@ -53,6 +53,12 @@ public class TopicService {
             a.setName(topic.getName());
         });
     }
+
+
+    public void deleteTopic(String id)
+    {
+        topics.removeIf(a->a.getId().equals(id));
+    }
 //    public void setTopics(List<Topic> topics) {
 //        this.topics = topics;
 //    }
