@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
@@ -43,7 +44,26 @@ public class TopicService {
     public void addTopic(Topic topic){
         this.topics.add(topic);
     }
+
+    public void updateTopic(String id, Topic topic)
+    {
+        topics.stream().filter(t -> t.getId().equals(id)).forEach(a -> {
+            a.setId(topic.getId());
+            a.setDescription(topic.getDescription());
+            a.setName(topic.getName());
+        });
+    }
 //    public void setTopics(List<Topic> topics) {
 //        this.topics = topics;
+//    }
+
+//    public static void main(String[] args){
+//
+//        TopicService ts  = new TopicService();
+////        ts.topics.stream().forEach(a -> a.setId("test"));
+//
+//        ts.topics.stream().filter(a -> a.getId().equals("Java-0")).forEach(a -> {System.out.println("Setting.....");a.setId("NEW TEDT"); a.setName("New Name"); a.setDescription("Test Description");});
+//
+//        ts.topics.stream().forEach(a -> System.out.println(a.getId()));
 //    }
 }
